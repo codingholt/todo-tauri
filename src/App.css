@@ -3,11 +3,10 @@
 }
 .container{
   box-sizing: border-box;
-  height: 100%;
-  width: 100%;
+  width: 100vh;
   margin: 0 auto;
-  padding: 60px;
-  height:100vh
+  padding: 30px;
+  height: 100vh;
 }
 
 .sub-container{
@@ -30,4 +29,10 @@
 }
 .close-icon{
   align-self: center;
+}
+
+.delAll{
+  color: grey;
+  font-size: 14px;
+  text-align: right;
 }
