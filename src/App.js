@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { arrayRemove } from './util/arrRemove.js';
 import { ask } from '@tauri-apps/api/dialog';
+import { writeFile } from '@tauri-apps/api/fs';
 import './App.css';
 import Input from './components/Input.js'
 
@@ -11,6 +12,11 @@ function App() {
 
   const submitTodo = (submit) =>{
     setTodo([...todo, submit])
+    const test = writeFile({
+      'contents' : submit,
+      'path' : './todo'
+    })
+    console.log(test)
     setInputField('')
  
   } 

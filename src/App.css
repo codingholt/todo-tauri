@@ -36,3 +36,13 @@
   font-size: 14px;
   text-align: right;
 }
+
+input {
+  outline: none
+}
+
+input:focus,
+input:active {
+  border-color: transparent;
+  border-bottom: 0.75px solid rgb(255, 160, 6)
+}
