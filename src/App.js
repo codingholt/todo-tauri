@@ -1,22 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { arrayRemove } from './util/arrRemove.js';
 import { ask } from '@tauri-apps/api/dialog';
-import { writeFile } from '@tauri-apps/api/fs';
+
 import './App.css';
+
+import {  all,
+  create,
+  remove} from './util/db.js'
+
 import Input from './components/Input.js'
+
+
+
 
 function App() {
   const [showInput, setshowInput] = useState(false)
   const [todo, setTodo] = useState([])
   const [InputField, setInputField] = useState('')
 
+  useEffect(() => {
+    all().then((res) => setTodo(res.map(r => r.title)))
+  }, [])
+  
+
   const submitTodo = (submit) =>{
     setTodo([...todo, submit])
-    const test = writeFile({
-      'contents' : submit,
-      'path' : './todo'
-    })
-    console.log(test)
+    create(submit)
     setInputField('')
  
   } 
