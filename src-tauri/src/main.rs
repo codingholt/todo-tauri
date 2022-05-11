@@ -4,7 +4,7 @@
 )]
 
 use tauri_plugin_sql::{Migration, MigrationKind, TauriSql};
-use tauri::{CustomMenuItem, Menu, MenuItem, Submenu};
+use tauri::{Menu, MenuItem, Submenu};
 
 
 
@@ -38,7 +38,7 @@ let menu = Menu::new()
   .add_submenu(about_menu)
   .add_submenu(edit_menu)
   .add_submenu(view_menu)
-  .add_submenu(window_menu)
+  .add_submenu(window_menu);
   
   tauri::Builder::default()
     .menu(menu)

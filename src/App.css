@@ -1,5 +1,6 @@
 .title{
   font-size: 43px;
+  user-select: none;
 }
 .container{
   box-sizing: border-box;
