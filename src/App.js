@@ -18,15 +18,19 @@ function App() {
   const [showInput, setshowInput] = useState(false)
   const [todo, setTodo] = useState([])
   const [InputField, setInputField] = useState('')
-  console.log(todo)
+
+
   useEffect(() => {
     all().then((res) => setTodo(res))
   }, [])
   
 
-  const submitTodo = (submit) =>{
-    setTodo([...todo, submit])
-    create(submit)
+  const submitTodo = (title) =>{
+    
+    const id = Math.floor(Math.random() * 1000) + 1
+    console.log({id,title})
+    setTodo([...todo, {id, title}])
+    create(id, title)
     setInputField('')
  
   } 
