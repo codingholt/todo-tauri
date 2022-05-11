@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { arrayRemove } from './util/arrRemove.js';
+
 import { ask } from '@tauri-apps/api/dialog';
 
 import './App.css';
@@ -18,9 +18,9 @@ function App() {
   const [showInput, setshowInput] = useState(false)
   const [todo, setTodo] = useState([])
   const [InputField, setInputField] = useState('')
-
+  console.log(todo)
   useEffect(() => {
-    all().then((res) => setTodo(res.map(r => r.title)))
+    all().then((res) => setTodo(res))
   }, [])
   
 
@@ -38,9 +38,14 @@ function App() {
       return
     }
     remove(t)
-    const newTodo = arrayRemove(todo, t)
-
+    const newTodo = todo.filter(object => {
+      return object.id !== t;
+    });
+    
+   
     setTodo(newTodo)
+
+
   }
 
   const deleteAllTodo = async () =>{
@@ -56,7 +61,7 @@ function App() {
         <h1 className='title'>todo.</h1>
         {todo.length  > 0 ? <div className='delAll' onClick={()  => deleteAllTodo()}><span>delete all todo's</span></div> : ''}
         <div>
-          {todo.map(t => <p className='todo-item' onClick={(e) => e.button === 1 && removeItem(t)}>{t}</p>)}
+          {todo.map(t => <p className='todo-item' key={t.id} onClick={(e) => e.button === 1 && removeItem(t.id)}>{t.title}</p>)}
         </div>
         <div className='sub-container' onClick={() => setshowInput(true)}>
           {showInput ? <Input onSubmit={submitTodo} value={InputField} setInputField={setInputField}/> :''}
