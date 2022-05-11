@@ -60,6 +60,7 @@ function App() {
     removeAll()
     setTodo([])
   }
+  
   return (
     <div className='container'>
         <h1 className='title'>todo.</h1>
