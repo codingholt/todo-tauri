@@ -30,9 +30,14 @@ const remove = async (id) => {
   return await db.execute('DELETE FROM todos WHERE id = $1', [id]);
 }
 
+const removeAll = async () =>{
+    return await db.execute('DELETE FROM todos')
+}
+
 export {
   all,
   create,
   update,
-  remove
+  remove,
+  removeAll
 };

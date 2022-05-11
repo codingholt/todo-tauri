@@ -6,7 +6,8 @@ import './App.css';
 
 import {  all,
   create,
-  remove} from './util/db.js'
+  remove,
+  removeAll} from './util/db.js'
 
 import Input from './components/Input.js'
 
@@ -36,6 +37,7 @@ function App() {
     if(sure === false){
       return
     }
+    remove(t)
     const newTodo = arrayRemove(todo, t)
 
     setTodo(newTodo)
@@ -46,6 +48,7 @@ function App() {
     if(sure === false){
       return
     }
+    removeAll()
     setTodo([])
   }
   return (
