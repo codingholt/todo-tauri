@@ -10,4 +10,6 @@ made with tauri.
 
 - [ ] Checkbox
 
+- [ ] Edit todo button
+
 - [ ] Notification system
