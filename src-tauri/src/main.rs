@@ -1,6 +1,6 @@
 #![cfg_attr(
-  all(not(debug_assertions), target_os = "windows"),
-  windows_subsystem = "windows"
+  all(not(debug_assertions), target_os = "macos"),
+  windows_subsystem = "macos"
 )]
 
 use tauri_plugin_sql::{Migration, MigrationKind, TauriSql};

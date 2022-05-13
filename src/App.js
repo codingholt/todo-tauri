@@ -29,7 +29,7 @@ function App() {
     create(id, title)
     setInputField('')
  
-  } 
+  }
  
   
   const removeItem = async (t) =>{
@@ -46,6 +46,7 @@ function App() {
      setTodo(newTodo)
   } 
 
+
   const deleteAllTodo = async () =>{
     const sure = await ask("Are you sure you want to delete all todo's?")
     if(sure === false){
@@ -60,7 +61,7 @@ function App() {
         <h1 className='title'>todo.</h1>
         {todo.length  > 0 ? <div className='delAll' onClick={()  => deleteAllTodo()}><span>delete all todo's</span></div> : ''}
         <div>
-          {todo.map(t => <p className='todo-item' key={t.id} onClick={(e) => e.button === 1 && removeItem(t.id)}><input type="radio" checked={t.done}></input> <span>{t.title}</span></p>)}
+          {todo.map(t => <p className='todo-item' key={t.id} onClick={(e) => e.button === 1 && removeItem(t.id)}><input type="checkbox" className='checkbox' checked={t.done}></input> <span>{t.title}</span></p>)}
         </div>
         <div className='sub-container' onClick={() => setshowInput(true)}>
           {showInput ? <Input onSubmit={submitTodo} value={InputField} setInputField={setInputField}/> :''}

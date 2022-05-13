@@ -55,3 +55,20 @@ input:active {
   border-color: transparent;
   border-bottom: 0.75px solid rgb(255, 160, 6)
 }
+
+.checkbox {
+  width: 1.3em;
+  height: 1.3em;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 2px solid white;
+  box-shadow: 0 0 0 1.5pt rgb(255, 160, 6);
+  appearance: none;
+  -webkit-appearance: none;
+
+  cursor: pointer;
+}
+.checkbox:checked {
+  background-color: rgb(255, 160, 6);
+}
