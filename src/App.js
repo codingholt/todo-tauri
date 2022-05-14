@@ -4,7 +4,8 @@ import './App.css';
 import {  all,
   create,
   remove,
-  removeAll} from './util/db.js'
+  removeAll,
+  update} from './util/db.js'
 import Input from './components/Input.js'
 
 
@@ -56,12 +57,18 @@ function App() {
     setTodo([])
   }
 
+  const setDone = async (id) =>{
+    setTodo(todo.map((t) => {
+      t.id === id  ? {...t, completed: !t.completed} : t
+    }))}
+
+  
   return (
     <div className='container'>
         <h1 className='title'>todo.</h1>
         {todo.length  > 0 ? <div className='delAll' onClick={()  => deleteAllTodo()}><span>delete all todo's</span></div> : ''}
         <div>
-          {todo.map(t => <p className='todo-item' key={t.id} onClick={(e) => e.button === 1 && removeItem(t.id)}><input type="checkbox" className='checkbox' checked={t.done}></input> <span>{t.title}</span></p>)}
+          {todo.map(t => <p className='todo-item' key={t.id} onClick={(e) => e.button === 1 && removeItem(t.id)}><input type="checkbox" className='checkbox' onChange={setDone(t.id)} checked={t.completed}></input> <span>{t.title}</span></p>)}
         </div>
         <div className='sub-container' onClick={() => setshowInput(true)}>
           {showInput ? <Input onSubmit={submitTodo} value={InputField} setInputField={setInputField}/> :''}
