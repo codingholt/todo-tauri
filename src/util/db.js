@@ -12,17 +12,18 @@ const all = async () => {
   return await db.select('SELECT * FROM todos')
 }
 
-const create  = async (id, title) => {
+const create  = async (id, title, completed) => {
 
-await db.execute('INSERT INTO todos (id, title) VALUES (?,?)', [id, title]);
+await db.execute('INSERT INTO todos (id, title) VALUES (?,?)', [id, title, completed]);
   return {
     id,
     title,
+    completed,
   };
 }
 
 const update = async (todo) => {
-  await db.execute('UPDATE todos SET title = $1 WHERE id = $2', [todo.title, todo.id]);
+  await db.execute('UPDATE todos SET title = $1 AND completed= $3 WHERE id = $2', [todo.title, todo.id, todo.completed]);
   return todo;
 }
 
