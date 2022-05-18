@@ -23,8 +23,8 @@ await db.execute('INSERT INTO todos (id, title) VALUES (?,?)', [id, title, compl
 }
 
 const update = async (todo) => {
-  await db.execute('UPDATE todos SET title = $1 AND completed= $3 WHERE id = $2', [todo.title, todo.id, todo.completed]);
-  return todo;
+  return await db.execute('UPDATE todos SET title = $1 AND completed= $3 WHERE id = $2', [todo.title, todo.id, todo.completed]);
+  ;
 }
 
 const remove = async (id) => {
